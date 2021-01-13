@@ -11,20 +11,26 @@
 					</li>
 					<li>
                     	 @if(url()->current() == route('catgory') )
-						<a href="#"> catgories</a>
+						<a href="#"> Categories</a>
 						 @else
-						<a href="{{route('catgory')}}"> catgories</a> 
+						<a href="{{route('catgory')}}"> Catgories</a> 
 						 @endif
 					</li>
                     <li>
                     	 @if(url()->current() == route('user') )
-						<a href="#"> users</a>
+						<a href="#"> Users</a>
 						 @else
-						<a href="{{route('user')}}"> users</a> 
+						<a href="{{route('user')}}"> Users</a> 
 						 @endif
 					</li>
 
-
+					<li>
+                    	 @if(url()->current() == route('admins') )
+						<a href="#">Admins</a>
+						 @else
+						<a href="{{route('admins')}}"> Admins</a> 
+						 @endif
+					</li>
 					
 				</ul>
                 </div>

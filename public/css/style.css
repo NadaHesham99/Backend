@@ -25,7 +25,7 @@ body{
 }
 .navbar-expand-lg .navbar-nav{margin: auto;}
 .navbar-light .navbar-nav .nav-link{
-    color: #000 ; 
+    color: rgb(86 86 86 / 90%) ; 
     font-weight: 600 ; 
     font-size: 18px; 
     margin-right: 30px
@@ -66,9 +66,16 @@ body{
     right: 9px
 } 
 .navbar .cart{
-    color: #000;
+    color: rgb(86 86 86 / 90%);
     margin-left: 20px;
     font-size: 25px;
+    position: relative
+}
+.navbar .cart span{
+    position: absolute;
+    bottom: 23px;
+    right: 6px;
+    font-size: 20px;
 }
 .navbar .cart:hover{
     color: #ff2020;
@@ -340,7 +347,7 @@ body{
 .best-selling .content img{
     width: 100%;
 }
-.best-selling .content h3{
+.best-selling .content a{
     position: absolute;
     left: 0;
     bottom: 0;
@@ -357,17 +364,24 @@ body{
     
 }
 .best-selling .content .btn-cart{padding: 10px}
-.best-selling .content:hover h3{
+.best-selling .content:hover a{
     transform:translate(0 , 0);
+    text-decoration: none
 }
 .best-selling .details{
-    margin-top: 20px
+    margin-top: 20px;
+    margin-bottom: 50px
 }
 .best-selling .details p{
     color: #ff2020;
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 0px;
     font-weight: 700;
+}
+.best-selling .details p span{
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: normal
 }
 .item-product{
     margin-bottom: 70px;
@@ -378,16 +392,18 @@ body{
     text-decoration: none;
 }
 .best-selling .details a:hover{
-    color: #275fbb;
+    color: #ff2020;
     text-decoration: none;
 }
 .best-selling .details .product-name{
     color: #444444;
-    font-size: 18px;
+    font-size: 15px;
     text-decoration: none;
     margin-bottom: 3px;
+    font-weight: 600
 }
-.best-selling button{
+
+.best-selling .view-more{
     text-transform: uppercase;
     color: #fff;
     background: #ff2020;
@@ -401,7 +417,7 @@ body{
     position: relative;
     z-index: 1;
 }
-.best-selling button::before{
+.best-selling .view-more::before{
     content: '';
     position: absolute;
     left: 0;
@@ -412,7 +428,7 @@ body{
     z-index: -1;
     transition: all .4s ease-in; 
 }
-.best-selling button:hover::before{width: 100%;}
+.best-selling .view-more:hover::before{width: 100%;}
 
 .best-selling .disabled{
     display: none
@@ -527,16 +543,80 @@ body{
     width: 100%;
     height: 100%
 }
+.cart-details .card-body .related{
+    margin-bottom: 30px
+}
+.cart-details .card-body .item img{
+    width: 70px;
+    height: 70px;
+    margin-bottom: 5px;
+}
 .cart-details .price{
     font-size: 20px;
     color: #ff2020;
     font-weight: bold;
     margin-bottom: 50px
 }
+.cart-details .first{
+    margin-bottom: 10px
+}
+.cart-details .price span{
+    color: #585858;
+    font-weight: bold
+}
 .cart-details .card-title{
     font-size: 25px;
     margin-bottom: 20px
 }
+
+.slick-arrow{
+    border-radius: 10%;
+}
+.slick-arrow::before{
+    font-size: 18px;
+    line-height: 20px;
+    color: #000
+}
+.best-selling .slick-arrow{
+    border-radius: 10%;
+    top: 35%;
+}
+.best-selling  .slick-arrow::before{
+    font-size: 25px;
+    line-height: 25px;
+    color: #000
+}
+.checkout{
+    padding: 100px 0;
+    text-align: left
+}
+.checkout h3{
+    margin-bottom: 30px;
+    color: #ff2020
+}
+.checkout form{
+    width: 60%;
+    margin: auto
+}
+.checkout form input{
+    margin-bottom: 20px
+}
+.checkout form .btn-submit{
+    background: #ff2020;
+    color: #fff;
+    border: none;
+    padding: 5px 10px
+}
+
+.thankyou{
+    padding: 100px
+}
+.thankyou h2{
+    font-size: 45px;
+    color: #777;
+    margin-bottom: 30px
+}
+
 /*End Media for Footer */
 
 /*End Footer Section */
@@ -594,7 +674,7 @@ body{
 /*Start Form*/
 
 .resigter,
-.login.
+.login,
 .add-db{
     padding: 100px 0
 }
@@ -652,7 +732,8 @@ body{
     transition: all .4s ease-in; 
 }
 
-.login .container{
+.login .container,
+{
     width: 600px
 }
 /*===========================================================*/
@@ -687,6 +768,10 @@ body{
 
 
 /*Start Table*/
+.table td, .table th {
+    padding-right: 0.1rem;
+ 
+}
 .table .h1{
     margin: 40px;
     font-family: 'Josefin Sans', sans-serif;

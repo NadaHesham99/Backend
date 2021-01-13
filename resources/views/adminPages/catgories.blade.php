@@ -23,13 +23,29 @@
                
 
                      
-                <input type="text" name="name_en" placeholder="Categories Name in English" title="Category name must be in English character only" autocomplete="on" class="form-control"  @if(isset($category)) value="{{$category->name}}" @endif>
+                <input type="text" name="name_en" placeholder="Categories Name in English" title="Category name must be in English character only" autocomplete="on" class="form-control"  @if(isset($category)) value="{{$category->name}}" @else  value="{{ old('name_en')}}" @endif>
                 
-             
-                <input type="text" name="Price" placeholder="Categories minimum Price" title="Product Price must be at least 5 digits" autocomplete="on" class="form-control" @if(isset($category)) value="{{$category->minPrice}}" @endif>
-                
+                 @error('name_en')
+                    <span class="text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+
+                <input type="text" name="Price" placeholder="Categories minimum Price" title="Product Price must be at least 5 digits" autocomplete="on" class="form-control" @if(isset($category)) value="{{$category->minPrice}}" @else value="{{ old('Price')}}" @endif>
+
+                 @error('Price')
+                    <span class="text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                   
-                <input type="text" name="nameDiscription" placeholder="Category Description" title="Category Description must be in English character" autocomplete="on" class="form-control" @if(isset($category)) value="{{$category->discription}}" @endif>
+                <input type="text" name="nameDiscription" placeholder="Category Description" title="Category Description must be in English character" autocomplete="on" class="form-control" @if(isset($category)) value="{{$category->discription}}" @else value="{{ old('nameDiscription')}}" @endif>
+                
+                 @error('nameDiscription')
+                    <span class="text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                      
                 <input type="submit" title="Can't Register" data-content="you should match all validation first" class="btn-resigter form-control" @if(isset($category)) value="Update" @else value="Add" @endif>
       

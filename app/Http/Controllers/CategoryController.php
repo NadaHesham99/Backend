@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Models\Categories;
 
+use App\Models\Products;
+
+
+use Illuminate\Support\Facades\Validator;
+
+
 class CategoryController extends Controller
 {
     public function catgory(){
@@ -14,7 +20,21 @@ class CategoryController extends Controller
        return view('adminPages/catgories', compact('categories'));
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            
+            'name_en' => ['required', 'string', 'max:255','regex:/^[a-zA-Z ]+$/u'],
+            'Price' => ['required'],
+            'nameDiscription' => ['required'],
+
+        ]);
+    }
+
     public function addCatgory(Request $request){
+
+      $this->validator($request->all())->validate();
+
        $catgory = new Categories();
 
         $catgory->name = $request->get('name_en');
@@ -64,4 +84,19 @@ class CategoryController extends Controller
        return back();
 
     }
+
+
+       public function product_categories($category_id){
+      
+       $category = Categories::find($category_id);
+
+       $categories = Categories::all();
+
+       $products = Products::all();
+       
+       return view('product_categories',compact('category', 'categories','products','category_id'));
+
+    }
+
+
 }

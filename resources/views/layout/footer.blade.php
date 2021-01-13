@@ -1,3 +1,32 @@
+   <!--Start Contact Section-->
+     <section class="contact-us text-center" id="contact">
+       <div class="container fix">
+          <div class="row">
+             <div class="col-md">
+                <div class="contact-content">
+                   <i class="fas fa-phone-volume"></i>
+                   <h4>Call us:</h4>
+                   
+                   <span class="contact">012-34567890</span>
+                </div> 
+             </div> 
+              
+              <div class="col-md">
+                <div class="contact-content">
+                   <i class="fas fa-envelope-open"></i>
+                   <h4>Contact us:</h4>
+                   
+                   <span class="contact">hmzone@gmail.com</span>
+                </div> 
+             </div> 
+              
+              
+          </div>  
+       </div>  
+     </section>
+    <!--End Contact Section-->
+     
+
 <!--Start Footer-->
       <section class="footer">
          <div class="container">
@@ -15,8 +44,8 @@
                   <ul class="list-unstyled">
                      <li><a href="#">About</a></li>
                      <li><a href="#lastest">Lastest</a></li>
-                     <li><a href="#">Cart</a></li>
-                     <li><a href="#">Contact Us</a></li>
+                     <li><a href="{{route('cart')}}">Cart</a></li>
+                     <li><a href="#contact">Contact Us</a></li>
                   </ul>
                 </div>
               </div>
@@ -24,10 +53,11 @@
                 <div class="quick-link-footer">
                 <h3>New Products</h3>
                   <ul class="list-unstyled">
-                     <li><a href="{{route('clothes')}}">Clothes</a></li>
-                     <li><a href="{{route('accessories')}}">Accessories</a></li>
-                     <li><a href="{{route('furniture')}}">Furniture</a></li>
-                     <li><a href="{{route('carpets')}}">carpets</a></li>
+                    @foreach($categories as $category)
+                    @if($category->id < 5)
+                     <li><a href="{{route('product_categories' , $category->id)}}">{{$category->name}}</a></li>
+                     @endif
+                     @endforeach
                  </ul>
                 </div>
               </div>
@@ -74,13 +104,14 @@
        <i class="fas fa-level-up-alt"></i>
       </div>
     <!--End Scroll to top-->
-    
 
 
   <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+  <script src="{{asset('js/jquery-migrate-1.2.1.min.js')}}"></script>
+  <script src="{{asset('js/slick.min.js')}}"></script>
   <script src="{{asset('js/popper.min.js')}}"></script>
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('js/admin.js')}}"></script>
+  <script src="{{asset('js/script.js')}}"></script>
   @yield('js')
 </body>
 </html>

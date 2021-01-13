@@ -9,13 +9,14 @@ class Cart extends Model
 {
     use HasFactory;
 
-     public function users()
+    public function user()
     {
-        return $this->hasOne('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 
-     public function products()
+    public function product()
     {
-        return $this->hasMany('App\Models\Products');
+        return $this->belongsTo('App\Models\Products');
     }
+
 }

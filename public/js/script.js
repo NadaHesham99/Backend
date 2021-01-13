@@ -1,5 +1,18 @@
+
+/*========================================================*/
 $(document).ready(function(){
 
+
+      $('.related').slick({
+          slidesToShow: 4,
+		  slidesToScroll: 1,
+		  autoplay: true,
+		  autoplaySpeed: 700,
+		  arrows:true,
+		  centerMode:true,
+		  centerPadding:'10px'
+     });
+    
 
 		$("#register-form input").wrap("<div class='form-group'></div>");
 		$("input:not([type='checkbox'],[type='submit'])").addClass("form-control");
@@ -125,4 +138,46 @@ $(document).ready(function(){
 
 
 /*==================================================*/
+
+
+var myBtn = document.getElementById("btn-product"),
+    
+    myDisabledDiv = document.getElementById("product");
+
+myBtn.onclick = function () {
+    
+    'use strict';
+       
+    myDisabledDiv.classList.toggle("disabled");
+        
+};
+
+/*============================================*/
+
+var scrollButton = $('#scroll-top');
+
+scrollButton.click(function () {
+    
+    'use strict';
+    
+    $("html,body").animate({ scrollTop : 0 }, 600);
+        
+});
+
+$(window).scroll(function () {
+        
+    'use strict';
+    
+    if ($(this).scrollTop() >= 700) {
+            
+        scrollButton.show();
+            
+    } else {
+            
+        scrollButton.hide();
+    }
+});
+/*=========================================================*/
+
+
 

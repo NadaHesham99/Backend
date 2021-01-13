@@ -16,12 +16,9 @@ class Products extends Model
         return $this->belongsTo('App\Models\Categories' , 'category_id');
     }
 
-    public function orders()
-    {
-        return $this->belongsTo('App\Models\Orders');
-    }
     public function carts()
     {
-        return $this->belongsTo('App\Models\Cart');
+        return $this->hasMany('App\Models\Cart');
     }
+   
 }

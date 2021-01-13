@@ -8,6 +8,8 @@ use App\Models\Products;
 
 use App\Models\Categories;
 
+use Illuminate\Support\Facades\Validator;
+
 
 class AdminController extends Controller
 {
@@ -18,8 +20,25 @@ class AdminController extends Controller
 
       return view('adminPages/admin', compact('products' ,'categories'));
     }
+   
+   protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            
+            'name_en' => ['required', 'string', 'max:255','regex:/^[a-zA-Z ]+$/u'],
+            'Price' => ['required'],
+            'Product_Image' => ['required'],
+            'category' => ['required'],
+
+        ]);
+    }
+
+  
 
     public function addProduct(Request $request){
+
+       $this->validator($request->all())->validate();
+
        $product = new Products();
 
         $product->name = $request->get('name_en');
@@ -108,68 +127,20 @@ class AdminController extends Controller
 
     }
 
-    public function clothes(){
+    
 
-       $products = Products::all();
+        
 
-       $categories = Categories::all();
-
-       return view('clothes', compact('products','categories'));
-    }
-
-        public function accessories(){
-
-       $products = Products::all();
-
-       $categories = Categories::all();
-
-       return view('accessories', compact('products','categories'));
-    }
-
-
-        public function wooden_toys(){
-
-       $products = Products::all();
-
-       $categories = Categories::all();
-
-       return view('wooden-toys', compact('products','categories'));
-    }
-
-
-        public function furniture(){
-
-       $products = Products::all();
-
-       $categories = Categories::all();
-
-       return view('furniture', compact('products','categories'));
-    }
-
-    public function carpets(){
-
-       $products = Products::all();
-
-       $categories = Categories::all();
-
-       return view('carpets', compact('products','categories'));
-    }
-
-
-        public function paintings(){
-
-       $products = Products::all();
-
-       $categories = Categories::all();
-
-       return view('paintings', compact('products','categories'));
-    }
-
-
-        public function details($product_id){
+    public function details($product_id){
       
-       $product = Products::find($product_id);
+      $product = Products::find($product_id);
 
-       return view('details', compact('product'));
+      $categories = Categories::all();
+ 
+      $related_products = Products::where('category_id' ,$product->category_id)->paginate(5);     
+
+       return view('details', compact('product' ,'related_products' , 'categories'));
     }
+
+
 }
